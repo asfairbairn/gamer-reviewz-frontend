@@ -1,5 +1,6 @@
 import React from 'react';
 import GameCard from './GameCard'
+import SearchBar from './SearchBar'
 
 function GamePage({games}) {
     const createGameCard = games.map((game) => {
@@ -7,9 +8,12 @@ function GamePage({games}) {
     })
 
     return (
-        <div>
-            {createGameCard}
-        </div>
+        <main>
+            <SearchBar />
+            <ul className="cards">
+                {createGameCard}
+            </ul>
+        </main>
     )
 }
 
