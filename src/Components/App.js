@@ -19,6 +19,8 @@ function App({Route, Switch}) {
     .then((games) => setGames(games))
   }, [])
 
+  console.log(games)
+
 
   return (
     <div className="App">
