@@ -24,15 +24,15 @@ function App({Route, Switch}) {
     <div className="App">
       <Header />
       <Switch>
+        <Route exact path="/">
+          <GamePage games={games}/>
+        </Route>
         <Route path="/genres">
           <GenrePage />
         </Route>
         <Route>
           <GameForm path="/gameform" />
-        </Route>
-        <Route exact path="/">
-          <GamePage games={games}/>
-        </Route>
+        </Route>        
       </Switch>
     </div>
   );
