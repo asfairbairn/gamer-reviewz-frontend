@@ -18,9 +18,9 @@ function GameDetails (API) {
         <section className="detail">
             <img src={image} alt={title}/>
             <h1>{title}</h1>
-            <h3>Developer: {studio}</h3>
-            <h3>Release Date: {releaseDate}</h3>
-            <h3>Genre: {genre}</h3>
+            <p1><b>Developer:</b> {studio}</p1>
+            <p1><b>Release Date:</b> {releaseDate}</p1>
+            <p1><b>Genre:</b> {genre}</p1>
             <p>{review}</p>
             <Link exact to="/">Back to Home</Link>
         </section>

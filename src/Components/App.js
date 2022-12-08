@@ -43,7 +43,7 @@ function App({Route, Switch}) {
           <GameDetails API={API}/>
         </Route>
         <Route path="/genres">
-          <GenrePage />
+          <GenrePage games={games}/>
         </Route>
         <Route path="/gameform">
           <GameForm games={games} setGames={setGames} API={API}/>
