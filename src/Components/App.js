@@ -4,6 +4,7 @@ import Header from './Header'
 import GamePage from './GamePage'
 import GenrePage from './GenrePage'
 import GameForm from './GameForm'
+import GameDetails from './GameDetails'
 
 
 
@@ -37,6 +38,9 @@ function App({Route, Switch}) {
       <Switch>
         <Route exact path="/">
           <GamePage games={filteredGames} search={search} handleSearch={handleSearch}/>
+        </Route>
+        <Route path="/games/:id">
+          <GameDetails API={API}/>
         </Route>
         <Route path="/genres">
           <GenrePage />
