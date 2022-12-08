@@ -13,11 +13,22 @@ function App({Route, Switch}) {
 
   const [games, setGames] = useState([])
 
+  const [search, setSearch] = useState("")
+
   useEffect(() => {
     fetch(API)
     .then(r => r.json())
     .then((games) => setGames(games))
   }, [])
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
+
+  const filteredGames = games.filter((game) => {
+    return game.title.toLowerCase().includes(search.toLowerCase())
+    
+  })
 
 
   return (
@@ -25,7 +36,7 @@ function App({Route, Switch}) {
       <Header />
       <Switch>
         <Route exact path="/">
-          <GamePage games={games}/>
+          <GamePage games={filteredGames} search={search} handleSearch={handleSearch}/>
         </Route>
         <Route path="/genres">
           <GenrePage />

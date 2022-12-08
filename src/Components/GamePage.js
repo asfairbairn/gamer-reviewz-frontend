@@ -2,14 +2,14 @@ import React from 'react';
 import GameCard from './GameCard'
 import SearchBar from './SearchBar'
 
-function GamePage({games}) {
+function GamePage({games, search, handleSearch}) {
     const createGameCard = games.map((game) => {
         return <GameCard game={game} />
     })
 
     return (
         <main>
-            <SearchBar />
+            <SearchBar search={search} handleSearch={handleSearch}/>
             <ul className="cards">
                 {createGameCard}
             </ul>
