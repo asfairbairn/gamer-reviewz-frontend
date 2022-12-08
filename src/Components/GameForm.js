@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
 function GameForm({games, setGames, API}) {
 
@@ -12,6 +13,8 @@ function GameForm({games, setGames, API}) {
         genre: "",
         plays: 0,
     })
+
+    const history = useHistory()
 
     const handleFormChange = (e) => {
         const attribute = e.target.name
@@ -26,7 +29,10 @@ function GameForm({games, setGames, API}) {
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(formData),})
             .then(r => r.json())
-            .then(newGame => setGames([...games, formData]))
+            .then(newGame => {
+                setGames([...games, formData])
+                history.push(`/games/${newGame.id}`)
+                })
 
     }
     return (
@@ -40,9 +46,10 @@ function GameForm({games, setGames, API}) {
                 <label for="studio">Developer:</label>
                 <input type="text" name="studio" placeholder="Developer" onChange={handleFormChange} value={formData.studio}/>
                 <label for="releaseDate">Release Date:</label>
-                <input type="date" name="releaseDate" required pattern="\d{4}-\d{2}-\d{2}" onChange={handleFormChange} value={formData.releaseDate}/>
+                <input type="date" name="releaseDate" required pattern="\d{2}-\d{2}-\d{4}" onChange={handleFormChange} value={formData.releaseDate}/>
                 <label for="genre">Genre:</label>
                 <select name="genre" onChange={handleFormChange} value={formData.genre}>
+                    <option value="" disabled selected hidden>Choose a Genre</option>
                     <option value="RPG">RPG</option>
                     <option value="MMORPG">MMORPG</option>
                     <option value="FPS">FPS</option>
@@ -50,7 +57,7 @@ function GameForm({games, setGames, API}) {
                     <option value="MOBA">MOBA</option>
                     <option value="Puzzle">Puzzle</option>
                     <option value="Roguelike">Roguelike</option>
-                    <option value="Social Deception Game">Social Deception Game</option>
+                    <option value="Social Deception Game">Social Deception</option>
                 </select>
                 <label for="review">Review:</label>
                 <textarea id="review" type="text" name="review" placeholder="Game review" onChange={handleFormChange} value={formData.review}/>
