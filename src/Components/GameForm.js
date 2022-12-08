@@ -53,7 +53,7 @@ function GameForm({games, setGames, API}) {
                     <option value="Social Deception Game">Social Deception Game</option>
                 </select>
                 <label for="review">Review:</label>
-                <input type="text" name="review" placeholder="Game review" onChange={handleFormChange} value={formData.review}/>
+                <textarea id="review" type="text" name="review" placeholder="Game review" onChange={handleFormChange} value={formData.review}/>
                 <button type="submit">Submit</button>
             </form>
 
