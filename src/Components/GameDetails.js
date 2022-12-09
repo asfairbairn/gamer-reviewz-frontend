@@ -23,6 +23,7 @@ function GameDetails (API) {
             <p1><b>Genre:</b> {genre}</p1>
             <p>{review}</p>
             <Link exact to="/">Back to Home</Link>
+            <Link to="/genres">Back to Genres</Link>
         </section>
    )
 }
